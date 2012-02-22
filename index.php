@@ -3,12 +3,12 @@
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
-				<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+				<h1><a href="<?php the_permalink(); ?>" class="entry-title"><?php the_title(); ?></a></h1>
 				<div class="entry-meta">
 					<span>Posted on</span> <time datetime="<?php echo date(DATE_W3C); ?>" pubdate><?php the_time('F jS, Y') ?></time>
 				</div>
 			</header>
-			<div class="entry">
+			<div class="entry-content">
 				<?php the_content(); ?>
 			</div>
 			<footer>
