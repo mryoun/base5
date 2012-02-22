@@ -7,7 +7,7 @@
 
 <?php get_footer(); ?> 
 
-<script defer src="<?php bloginfo('template_directory'); ?>/js/fun.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/fun.js"></script>
 
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

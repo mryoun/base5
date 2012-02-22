@@ -28,10 +28,10 @@ add_action('wp_enqueue_scripts', 'rd_bulletproof_jquery');
 
 
 // html5 figure & figcaption
-add_shortcode('wp_caption', 'custom_img_caption_shortcode');
-add_shortcode('caption', 'custom_img_caption_shortcode');
+add_shortcode('wp_caption', 'img_caption_shortcode');
+add_shortcode('caption', 'img_caption_shortcode');
 
-function custom_img_caption_shortcode($attr, $content = null) {
+function img_caption_shortcode($attr, $content = null) {
 	extract(shortcode_atts(array(
 		'id' => '',
 		'align' => 'alignnone',
@@ -44,11 +44,11 @@ function custom_img_caption_shortcode($attr, $content = null) {
 }
 
 
-// Theme init setup
-add_action( 'after_setup_theme', 'custom_setup' );
+// Theme init
+add_action( 'after_setup_theme', 'init' );
 
-if ( ! function_exists( 'custom_setup' ) ):
-	function custom_setup() {
+if ( ! function_exists( 'init' ) ):
+	function init() {
 
 		// Translations
 		load_theme_textdomain( 'custom', get_template_directory() . '/languages' );
