@@ -1,6 +1,13 @@
 <?php 
 
-// Display the year (usefull for the copyright)
+// Change the footer in admin panel
+function remove_footer_admin () {
+	echo 'Fueled by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Designed by <a href="http://yannabgrall.com" target="_blank">Yann Abgrall</a></p>';
+}
+add_filter('admin_footer_text', 'remove_footer_admin');
+
+
+// Display the year
 function copyrightYear() {
 	$year = 2012;
 
