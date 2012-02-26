@@ -1,7 +1,4 @@
 <?php 
-/*
- * Replace "custom" by the theme name (no spaces)
- */
 
 // Nicely loading jQuery from CDN, with local fallback
 function rd_bulletproof_jquery() {
@@ -67,7 +64,7 @@ if ( ! function_exists( 'init' ) ):
 		// add page excerpt support
 		add_post_type_support( 'page', 'excerpt' );
 		// register custom menu
-		register_nav_menu( 'primary', 'Primary Menu' );
+		register_nav_menu( 'nav', 'Top Navigation' );
 		// Remove links to the extra feeds (e.g. category feeds)
 		remove_action( 'wp_head', 'feed_links_extra', 3 );
 		// Remove link to the RSD service endpoint, EditURI link
