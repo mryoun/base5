@@ -2,7 +2,7 @@
 	</div><!-- /#main -->
 
 	<footer id="footer" role="contentinfo">
-		<p>&copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?></p>
+		<p>&copy; <?php echo copyrightYear(); ?> <?php echo bloginfo('name'); ?>, <?php _e('All rights reserved.'); ?></p>
 	</footer>
 
 <?php get_footer(); ?> 
@@ -18,3 +18,16 @@
 
 </body>
 </html>
+
+<?php
+// Display the year
+function copyrightYear() {
+	$year = 2012;
+
+	if (date("Y") == $year) {
+		echo $year;
+	} else {
+		echo $year . "-" . date("Y");
+	}
+}
+?>

@@ -18,9 +18,7 @@
 			</footer>
 		</article>
 <?php endwhile; else : ?> 
-
-		<h2>Not Found</h2>
-
+	<h2><?php _e('Not Found'); ?></h2>
 <?php endif; ?> 
 		
 <?php get_footer(); ?>
