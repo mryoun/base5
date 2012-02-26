@@ -2,6 +2,9 @@
 	</div><!-- /#main -->
 
 	<footer id="footer" role="contentinfo">
+		<nav>
+			<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_footer', 'depth' => '1' )); ?> 
+		</nav>
 		<p>&copy; <?php echo copyrightYear(); ?> <?php echo bloginfo('name'); ?>, <?php _e('All rights reserved.'); ?></p>
 	</footer>
 
@@ -18,16 +21,3 @@
 
 </body>
 </html>
-
-<?php
-// Display the year
-function copyrightYear() {
-	$year = 2012;
-
-	if (date("Y") == $year) {
-		echo $year;
-	} else {
-		echo $year . "-" . date("Y");
-	}
-}
-?>

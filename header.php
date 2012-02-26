@@ -70,7 +70,7 @@
 	</header>
 
 	<nav role="navigation">
-		<?php wp_nav_menu( array('menu' => 'top' )); ?> 
+		<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_top' )); ?> 
 	</nav>
 
 	<div id="main" role="main">

@@ -1,5 +1,16 @@
 <?php 
 
+// Display the year (usefull for the copyright)
+function copyrightYear() {
+	$year = 2012;
+
+	if (date("Y") == $year) {
+		echo $year;
+	} else {
+		echo $year . "-" . date("Y");
+	}
+}
+
 // Nicely loading jQuery from CDN, with local fallback
 function rd_bulletproof_jquery() {
 	$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
@@ -63,8 +74,13 @@ if ( ! function_exists( 'init' ) ):
 		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ));
 		// add page excerpt support
 		add_post_type_support( 'page', 'excerpt' );
-		// register custom menu
-		register_nav_menu( 'nav', 'Top Navigation' );
+		// register custom menus
+		register_nav_menus(
+			array(
+				'nav_top' => 'Top Navigation',
+				'nav_footer' => 'Footer Navigation'
+			)
+		);
 		// Remove links to the extra feeds (e.g. category feeds)
 		remove_action( 'wp_head', 'feed_links_extra', 3 );
 		// Remove link to the RSD service endpoint, EditURI link
