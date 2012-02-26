@@ -1,5 +1,9 @@
 <?php 
 
+// Custom Write Panel
+add_meta_box( 'my_first_meta_box', 'My First Meta Box', 'display_html', 'post', 'advanced', 'high' );
+
+
 // Change the footer in admin panel
 function remove_footer_admin () {
 	echo 'Fueled by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Designed by <a href="http://yannabgrall.com" target="_blank">Yann Abgrall</a></p>';
@@ -17,6 +21,7 @@ function copyrightYear() {
 		echo $year . "-" . date("Y");
 	}
 }
+
 
 // Nicely loading jQuery from CDN, with local fallback
 function rd_bulletproof_jquery() {
