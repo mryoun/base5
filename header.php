@@ -63,7 +63,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <!--[if lt IE 7 ]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <!--[if lt IE 7 ]><p class=chromeframe><?php _e('Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.'); ?></p><![endif]-->
 	<header role="banner">
 		<h1><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo('name'); ?></a></h1>
 		<em class="description"><?php bloginfo( 'description' ); ?></em>
