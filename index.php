@@ -1,4 +1,4 @@
-<?php get_header(); ?> 
+<?php get_header(); ?>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -12,13 +12,13 @@
 				<?php the_content(); ?>
 			</div>
 			<footer>
-				<?php the_tags(); ?> 
+				<?php the_tags(); ?>
 				<p>Posted in <?php the_category(', '); ?></p>
 				<p class="comments"><?php comments_popup_link('No Comments &#187;', '1 Comment #187;', '% Comments &#187;'); ?></p>
 			</footer>
 		</article>
-<?php endwhile; else : ?> 
+<?php endwhile; else : ?>
 	<h2><?php _e('Not Found'); ?></h2>
-<?php endif; ?> 
-		
+<?php endif; ?>
+
 <?php get_footer(); ?>

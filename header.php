@@ -5,10 +5,10 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" <?php language_attributes(); ?>>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<?php if (is_search()) { ?><meta name="robots" content="noindex, nofollow" /><?php } ?> 
-  <title><?php
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<?php if (is_search()) { ?><meta name="robots" content="noindex, nofollow" /><?php } ?>
+	<title><?php
 		if (function_exists('is_tag') && is_tag()) {
 			single_tag_title("Tag Archive for &quot;"); echo '&quot; - '; }
 		elseif (is_archive()) {
@@ -58,19 +58,23 @@
 
 	<script src="<?php bloginfo('template_directory'); ?>/js/modernizr-version.min.js"></script>
 
-	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?> 
-<?php wp_head(); ?> 
+	<link rel="alternate" type="application/rss+xml" title="<?php printf(__('%1$s %2$s Feed'), get_bloginfo('name'), '&raquo;'); ?>" href="<?php bloginfo('rss_url'); ?>">
+
+	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
+<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-  <!--[if lt IE 7 ]><p class=chromeframe><?php _e('Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.'); ?></p><![endif]-->
+<body id="<?php $post_parent = get_post($post->post_parent); $parentSlug = $post_parent->post_name; if (is_category()) { echo "CategoryPage"; } elseif (is_search()) { echo "SearchResults"; } elseif (is_tag()) { echo "Tag"; } else { echo $parentSlug; } ?>" class="<?php if (is_category()) { echo 'category'; } elseif (is_search()) { echo 'search'; } elseif (is_tag()) { echo "tag"; } elseif (is_home()) { echo "home"; } elseif (is_404()) { echo "page404"; } else { echo $post->post_name; } ?>">
+	<!--[if lt IE 7 ]><p class=chromeframe><?php _e('Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.'); ?></p><![endif]-->
 	<header role="banner">
 		<h1><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo('name'); ?></a></h1>
 		<em class="description"><?php bloginfo( 'description' ); ?></em>
 	</header>
 
 	<nav role="navigation">
-		<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_top' )); ?> 
+		<a href="#" class="dropdown-control">Menu</a>
+		<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_top' )); ?>
+
 	</nav>
 
 	<div id="main" role="main">

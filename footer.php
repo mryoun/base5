@@ -1,14 +1,13 @@
-
 	</div><!-- /#main -->
 
 	<footer id="footer" role="contentinfo">
 		<nav>
-			<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_footer', 'depth' => '1' )); ?> 
+			<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_footer', 'depth' => '1' )); ?>
 		</nav>
-		<p>&copy; <?php echo copyrightYear(); ?> <?php echo bloginfo('name'); ?>, <?php _e('All rights reserved.'); ?></p>
+		<p class="copyright">&copy; <?php echo copyrightYear(); ?> <?php echo bloginfo('name'); ?>, <?php _e('All rights reserved.'); ?></p>
 	</footer>
 
-<?php get_footer(); ?> 
+<?php get_footer(); ?>
 
 <script src="<?php bloginfo('template_directory'); ?>/js/fun.js"></script>
 

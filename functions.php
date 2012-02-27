@@ -1,14 +1,13 @@
-<?php 
+<?php
+
+// Alter Some Defaults Options
+if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ){
+
+}
+
 
 // Custom Write Panel
-add_meta_box( 'my_first_meta_box', 'My First Meta Box', 'display_html', 'post', 'advanced', 'high' );
 
-
-// Change the footer in admin panel
-function remove_footer_admin () {
-	echo 'Fueled by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Designed by <a href="http://yannabgrall.com" target="_blank">Yann Abgrall</a></p>';
-}
-add_filter('admin_footer_text', 'remove_footer_admin');
 
 
 // Display the year
@@ -65,10 +64,55 @@ function base5_img_caption_shortcode($attr, $content = null) {
 
 
 // Theme init
-add_action( 'after_setup_theme', 'init' );
+add_action( 'after_setup_theme', 'theme_init' );
 
-if ( ! function_exists( 'init' ) ):
-	function init() {
+if ( ! function_exists( 'theme_init' ) ):
+	function theme_init() {
+
+		// update_option( 'theme_setup_status', '0' );
+
+		// First we check to see if our default theme settings have been applied.
+		$the_theme_status = get_option( 'theme_setup_status' );
+		// If the theme has not yet been used we want to run our default settings.
+		if ( $the_theme_status !== '1' ) {
+			// Setup Default WordPress settings
+			$core_settings = array(
+				'blog_charset' => 'UTF-8',
+				'permalink_structure' => '/%category%/%postname%/',
+				'gmt_offset' => '+1',
+				'default_role' => 'author',
+				'comments_per_page' => 20,
+				'thread_comments' => 1,
+				'rss_use_excerpt' => 1,
+				'hack_file' => 0
+			);
+			foreach ( $core_settings as $k => $v ) {
+				update_option( $k, $v );
+			}
+
+			// Lets let the admin know whats going on.
+			$msg = '
+			<div class="updated">
+				<p>' . get_option( 'current_theme' ) . ' <a href="' . admin_url( 'options-general.php' ) . '" title="See Settings">settings</a> loaded.</p>
+			</div>';
+			add_action( 'admin_notices', $c = create_function( '', 'echo "' . addcslashes( $msg, '"' ) . '";' ) );
+
+		}
+		// Else if we are re-activing the theme
+		elseif ( $the_theme_status === '1' and isset( $_GET['activated'] ) ) {
+			$msg = '
+			<div class="updated">
+				<p>' . get_option( 'current_theme' ) . ' theme was successfully re-activated.</p>
+			</div>';
+			add_action( 'admin_notices', $c = create_function( '', 'echo "' . addcslashes( $msg, '"' ) . '";' ) );
+		}
+
+		// Remove the "Links" menu item
+		function delete_link_menu() {
+			remove_menu_page('link-manager.php');
+		}
+		add_action( 'admin_menu', 'delete_link_menu' );
+
 
 		// Translations
 		load_theme_textdomain( 'base5', get_template_directory() . '/languages' );
@@ -93,11 +137,15 @@ if ( ! function_exists( 'init' ) ):
 				'nav_footer' => 'Footer Navigation'
 			)
 		);
+
+
+		//Remove the links to the general feeds: Post and Comment Feed.
+		remove_action( 'wp_head', 'feed_links', 2 );
 		// Remove links to the extra feeds (e.g. category feeds)
 		remove_action( 'wp_head', 'feed_links_extra', 3 );
 		// Remove link to the RSD service endpoint, EditURI link
 		remove_action( 'wp_head', 'rsd_link' );
-		// Remove link to the Windows Live Writer manifest file
+		// Remove the link to the Windows Live Writer manifest file.
 		remove_action( 'wp_head', 'wlwmanifest_link' );
 		// Remove index link
 		remove_action( 'wp_head', 'index_rel_link' );
@@ -109,6 +157,17 @@ if ( ! function_exists( 'init' ) ):
 		remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 		// Remove XHTML generator showing WP version
 		remove_action( 'wp_head', 'wp_generator' );
+
+
+		// Change the footer in admin panel
+		function remove_footer_admin () {
+			echo 'Fueled by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Designed by <a href="http://yannabgrall.com" target="_blank">Yann Abgrall</a></p>';
+		}
+		add_filter('admin_footer_text', 'remove_footer_admin');
+
+
+		// Once done, we register our setting to make sure we don't duplicate everytime we activate.
+		update_option( 'theme_setup_status', '1' );
 
 	}
 endif;
