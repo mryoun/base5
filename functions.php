@@ -27,6 +27,12 @@ add_action( 'admin_head-post.php', 'tinymce_css');
 add_action( 'admin_head-post-new.php', 'tinymce_css');
 
 
+// Alter Some Defaults Options
+if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ){
+
+}
+
+
 // Display the year
 function copyrightYear() {
 	$year = 2012;
@@ -64,10 +70,10 @@ add_action('wp_enqueue_scripts', 'rd_bulletproof_jquery');
 
 
 // html5 figure & figcaption
-add_shortcode('wp_caption', 'img_caption_shortcode');
-add_shortcode('caption', 'img_caption_shortcode');
+add_shortcode('wp_caption', 'base5_img_caption_shortcode');
+add_shortcode('caption', 'base5_img_caption_shortcode');
 
-function img_caption_shortcode($attr, $content = null) {
+function base5_img_caption_shortcode($attr, $content = null) {
 	extract(shortcode_atts(array(
 		'id' => '',
 		'align' => 'alignnone',
@@ -149,16 +155,20 @@ if ( ! function_exists( 'theme_init' ) ):
 				'nav_footer' => 'Footer Navigation'
 			)
 		);
+
 		// Remove the "Links" menu item
 		function delete_link_menu() {
 			remove_menu_page('link-manager.php');
 		}
 		add_action( 'admin_menu', 'delete_link_menu' );
+
+		//Remove the links to the general feeds: Post and Comment Feed.
+		remove_action( 'wp_head', 'feed_links', 2 );
 		// Remove links to the extra feeds (e.g. category feeds)
 		remove_action( 'wp_head', 'feed_links_extra', 3 );
 		// Remove link to the RSD service endpoint, EditURI link
 		remove_action( 'wp_head', 'rsd_link' );
-		// Remove link to the Windows Live Writer manifest file
+		// Remove the link to the Windows Live Writer manifest file.
 		remove_action( 'wp_head', 'wlwmanifest_link' );
 		// Remove index link
 		remove_action( 'wp_head', 'index_rel_link' );
@@ -170,6 +180,7 @@ if ( ! function_exists( 'theme_init' ) ):
 		remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 		// Remove XHTML generator showing WP version
 		remove_action( 'wp_head', 'wp_generator' );
+
 
 		// Change the footer in admin panel
 		function remove_footer_admin () {

@@ -2,8 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: base5\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2012-02-27 18:35+0100\n"
 "PO-Revision-Date: 2012-02-27 18:35+0100\n"
+=======
+"POT-Creation-Date: 2012-02-22 20:56+0100\n"
+"PO-Revision-Date: 2012-02-22 20:56+0100\n"
+>>>>>>> 4e7abf896236196f2c4849a816863d2fed4dcaf1
 "Last-Translator: Yann Abgrall <mryoun@free.fr>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"

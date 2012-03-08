@@ -3,6 +3,9 @@
 	<hr>
 
 	<footer id="footer" role="contentinfo">
+		<nav>
+			<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_footer', 'depth' => '1' )); ?>
+		</nav>
 		<p>&copy; <?php echo copyrightYear(); ?> <a href="<?php echo home_url( '/' ); ?>"><?php bloginfo('name'); ?></a>, <?php _e('All rights reserved.', 'base5'); ?></p>
 	</footer>
 

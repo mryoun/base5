@@ -67,6 +67,8 @@
 
 	<script src="<?php bloginfo('template_directory'); ?>/js/libs/modernizr-min.js"></script>
 
+	<link rel="alternate" type="application/rss+xml" title="<?php printf(__('%1$s %2$s Feed'), get_bloginfo('name'), '&raquo;'); ?>" href="<?php bloginfo('rss_url'); ?>">
+
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_head(); ?>
 </head>

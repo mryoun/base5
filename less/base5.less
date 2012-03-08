@@ -1,7 +1,5 @@
-/*
- * Less, Thank You.
- * Here's all the classes to style
- */
+// Less, Thank You.
+// Here's all the classes to style
 
 h1,
 h2,
@@ -10,8 +8,20 @@ h4,
 h5,
 h6 {}
 
-header {}
-nav {}
-#main {}
+header[role="banner"] {
+	h1 {}
+	em {}
+}
 
-footer {}
+nav[role="navigation"] {
+	.dropdown-control {}
+}
+
+#main {
+
+}
+
+footer[role="contentinfo"] {
+	nav {}
+	.copyright {}
+}
