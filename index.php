@@ -5,7 +5,7 @@
 			<header>
 				<h1><a href="<?php the_permalink(); ?>" class="entry-title"><?php the_title(); ?></a></h1>
 				<div class="entry-meta">
-					<span>Posted on</span> <time datetime="<?php echo date(DATE_W3C); ?>" pubdate><?php the_time('F jS, Y') ?></time>
+					<span><?php _e('Posted on', 'base5'); ?></span> <time datetime="<?php echo date(DATE_W3C); ?>" pubdate><?php the_time('F jS, Y') ?></time>
 				</div>
 			</header>
 			<div class="entry-content">
@@ -13,7 +13,7 @@
 			</div>
 			<footer>
 				<?php the_tags(); ?>
-				<p>Posted in <?php the_category(', '); ?></p>
+				<p><?php _e('Posted in', 'base5'); ?> <?php the_category(', '); ?></p>
 				<p class="comments"><?php comments_popup_link('No Comments &#187;', '1 Comment #187;', '% Comments &#187;'); ?></p>
 			</footer>
 		</article>
