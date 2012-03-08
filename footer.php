@@ -1,13 +1,17 @@
+	</article>
 
-	</div><!-- /#main -->
+	<hr>
 
 	<footer id="footer" role="contentinfo">
-		<p>&copy; <?php echo copyrightYear(); ?> <?php echo bloginfo('name'); ?>, <?php _e('All rights reserved.'); ?></p>
+		<p>&copy; <?php echo copyrightYear(); ?> <a href="<?php echo home_url( '/' ); ?>"><?php bloginfo('name'); ?></a>, <?php _e('All rights reserved.', 'base5'); ?></p>
 	</footer>
 
-<?php get_footer(); ?> 
+<?php get_footer(); ?>
 
-<script src="<?php bloginfo('template_directory'); ?>/js/fun.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-min.js"><\/script>')</script>
+
+<script src="<?php bloginfo('template_directory'); ?>/js/script.js"></script>
 
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -18,16 +22,3 @@
 
 </body>
 </html>
-
-<?php
-// Display the year
-function copyrightYear() {
-	$year = 2012;
-
-	if (date("Y") == $year) {
-		echo $year;
-	} else {
-		echo $year . "-" . date("Y");
-	}
-}
-?>
