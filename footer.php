@@ -1,16 +1,20 @@
+	</article>
 
-	</div><!-- /#main -->
+	<hr>
 
 	<footer id="footer" role="contentinfo">
 		<nav>
-			<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_footer', 'depth' => '1' )); ?> 
+			<?php wp_nav_menu( array('container' => false, 'menu' => 'nav_footer', 'depth' => '1' )); ?>
 		</nav>
-		<p>&copy; <?php echo copyrightYear(); ?> <?php echo bloginfo('name'); ?>, <?php _e('All rights reserved.'); ?></p>
+		<p>&copy; <?php echo copyrightYear(); ?> <a href="<?php echo home_url( '/' ); ?>"><?php bloginfo('name'); ?></a>, <?php _e('All rights reserved.', 'base5'); ?></p>
 	</footer>
 
-<?php get_footer(); ?> 
+<?php get_footer(); ?>
 
-<script src="<?php bloginfo('template_directory'); ?>/js/fun.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-min.js"><\/script>')</script>
+
+<script src="<?php bloginfo('template_directory'); ?>/js/script.js"></script>
 
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
